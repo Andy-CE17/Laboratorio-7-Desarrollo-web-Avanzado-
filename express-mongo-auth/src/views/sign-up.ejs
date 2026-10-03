@@ -2,27 +2,50 @@
 <html lang="es">
 <head><%- include("partials/head", { title: "Crear cuenta" }) %></head>
 <body class="auth-page signup-page" data-page="sign-up">
-  <header class="simple-header shell"><a class="brand" href="/signIn"><span class="brand-icon"><i class="fa-solid fa-fingerprint"></i></span><span>NEXUS</span></a><a class="quiet-link" href="/signIn"><i class="fa-solid fa-arrow-left"></i> Volver al acceso</a></header>
-  <main class="signup-shell shell">
-    <section class="signup-intro"><p class="overline"><span></span> Nueva identidad</p><h1>Crea tu espacio <em>seguro.</em></h1><p>Completa tus datos personales. Tu edad se calcula desde la fecha de nacimiento y no se almacena como un campo independiente.</p><div class="signup-benefits"><div><i class="fa-solid fa-user-lock"></i><span><strong>Perfil privado</strong>Información protegida por JWT</span></div><div><i class="fa-solid fa-layer-group"></i><span><strong>Permisos claros</strong>Acceso asignado según tu rol</span></div><div><i class="fa-solid fa-calendar-check"></i><span><strong>Edad calculada</strong>Siempre actualizada desde tu nacimiento</span></div></div></section>
-    <section class="signup-card">
-      <div class="form-progress"><span class="active">01</span><i></i><span>02</span><i></i><span>03</span></div>
-      <div class="auth-heading"><p class="overline">Registro de usuario</p><h2>Datos de la cuenta</h2><p>Los campos marcados son obligatorios.</p></div>
-      <div class="alert" data-alert hidden></div>
-      <form id="signUpForm" novalidate>
-        <div class="form-grid two-columns">
-          <div><label class="field-label" for="name">Nombres</label><div class="modern-field"><i class="fa-regular fa-user"></i><input id="name" name="name" type="text" minlength="2" placeholder="Tus nombres" required></div></div>
-          <div><label class="field-label" for="lastName">Apellidos</label><div class="modern-field"><i class="fa-regular fa-id-badge"></i><input id="lastName" name="lastName" type="text" minlength="2" placeholder="Tus apellidos" required></div></div>
-          <div><label class="field-label" for="phoneNumber">Teléfono</label><div class="modern-field"><i class="fa-solid fa-mobile-screen"></i><input id="phoneNumber" name="phoneNumber" type="tel" pattern="[0-9+() -]{7,20}" placeholder="999 999 999" required></div></div>
-          <div><label class="field-label" for="birthdate">Fecha de nacimiento</label><div class="modern-field"><i class="fa-regular fa-calendar"></i><input id="birthdate" name="birthdate" type="date" required></div><small class="age-preview" data-age-preview>La edad se calculará automáticamente</small></div>
-          <div class="full-column"><label class="field-label" for="email">Correo electrónico</label><div class="modern-field"><i class="fa-regular fa-envelope"></i><input id="email" name="email" type="email" autocomplete="email" placeholder="nombre@correo.com" required></div></div>
-          <div class="full-column"><label class="field-label" for="password">Contraseña</label><div class="modern-field"><i class="fa-solid fa-key"></i><input id="password" name="password" type="password" autocomplete="new-password" minlength="8" placeholder="Crea una contraseña segura" required><button class="field-action" type="button" data-toggle-password aria-label="Mostrar contraseña"><i class="fa-regular fa-eye"></i></button></div><div class="password-rules"><span data-rule="length"><i class="fa-solid fa-circle"></i> 8 caracteres</span><span data-rule="uppercase"><i class="fa-solid fa-circle"></i> Mayúscula</span><span data-rule="number"><i class="fa-solid fa-circle"></i> Número</span><span data-rule="special"><i class="fa-solid fa-circle"></i> # $ % & * @</span></div></div>
-          <div class="full-column"><label class="field-label" for="confirmPassword">Confirmar contraseña</label><div class="modern-field"><i class="fa-solid fa-shield-halved"></i><input id="confirmPassword" name="confirmPassword" type="password" autocomplete="new-password" minlength="8" placeholder="Repite tu contraseña" required><button class="field-action" type="button" data-toggle-password aria-label="Mostrar contraseña"><i class="fa-regular fa-eye"></i></button></div></div>
-          <div class="full-column"><label class="field-label" for="url_profile">Imagen de perfil <span>opcional</span></label><div class="modern-field"><i class="fa-regular fa-image"></i><input id="url_profile" name="url_profile" type="url" placeholder="https://sitio.com/mi-foto.jpg"></div></div>
-          <div class="full-column"><label class="field-label" for="address">Dirección <span>opcional</span></label><div class="modern-field"><i class="fa-solid fa-location-dot"></i><input id="address" name="address" type="text" maxlength="180" placeholder="Ciudad o dirección de referencia"></div></div>
+  <main class="auth-layout">
+    <section class="auth-visual" aria-labelledby="signup-title">
+      <a class="brand auth-brand" href="/signIn"><span class="brand-icon"><i class="fa-solid fa-fingerprint"></i></span><span>NEXUS</span></a>
+      <div class="visual-copy">
+        <p class="overline"><span></span> Nueva identidad</p>
+        <h1 id="signup-title">Crea un espacio <em>hecho para ti.</em></h1>
+        <p>Registra tu información una sola vez y accede a un perfil protegido, organizado y siempre disponible.</p>
+      </div>
+      <div class="visual-status"><i class="fa-solid fa-user-shield"></i><div><strong>Registro protegido</strong><span>Tus datos permanecen seguros</span></div></div>
+    </section>
+
+    <section class="auth-panel">
+      <div class="auth-card signup-auth-card">
+        <div class="signup-card-top">
+          <div><p class="overline">Crear cuenta</p><h2>Completa tu perfil</h2><p data-step-description>Primero, cuéntanos quién eres.</p></div>
+          <div class="step-counter"><strong data-step-number>01</strong><span>/ 02</span></div>
         </div>
-        <button class="primary-action waves-effect" type="submit"><span>Crear mi cuenta</span><i class="fa-solid fa-user-plus"></i></button>
-      </form>
+        <div class="step-progress" aria-hidden="true"><span class="active" data-progress-step="1"></span><span data-progress-step="2"></span></div>
+        <div class="alert" data-alert hidden></div>
+
+        <form id="signUpForm" novalidate>
+          <section class="signup-step active" data-signup-step="1">
+            <div class="step-fields two-column-step">
+              <div><label class="field-label" for="name">Nombres</label><div class="modern-field"><i class="fa-regular fa-user"></i><input id="name" name="name" type="text" minlength="2" placeholder="Tus nombres" required></div></div>
+              <div><label class="field-label" for="lastName">Apellidos</label><div class="modern-field"><i class="fa-regular fa-id-badge"></i><input id="lastName" name="lastName" type="text" minlength="2" placeholder="Tus apellidos" required></div></div>
+              <div class="step-full"><label class="field-label" for="email">Correo electrónico</label><div class="modern-field"><i class="fa-regular fa-envelope"></i><input id="email" name="email" type="email" autocomplete="email" placeholder="nombre@correo.com" required></div></div>
+              <div><label class="field-label" for="phoneNumber">Teléfono</label><div class="modern-field"><i class="fa-solid fa-mobile-screen"></i><input id="phoneNumber" name="phoneNumber" type="tel" pattern="[0-9+() -]{7,20}" placeholder="999 999 999" required></div></div>
+              <div><label class="field-label" for="birthdate">Fecha de nacimiento</label><div class="modern-field"><i class="fa-regular fa-calendar"></i><input id="birthdate" name="birthdate" type="date" required></div><small class="age-preview" data-age-preview>La edad se calculará automáticamente</small></div>
+            </div>
+            <button class="primary-action step-action waves-effect" type="button" data-next-step><span>Continuar</span><i class="fa-solid fa-arrow-right"></i></button>
+          </section>
+
+          <section class="signup-step" data-signup-step="2" hidden>
+            <div class="step-fields">
+              <div><label class="field-label" for="url_profile">Imagen de perfil <span>opcional</span></label><div class="modern-field"><i class="fa-regular fa-image"></i><input id="url_profile" name="url_profile" type="url" placeholder="https://sitio.com/foto.jpg"></div></div>
+              <div><label class="field-label" for="address">Dirección <span>opcional</span></label><div class="modern-field"><i class="fa-solid fa-location-dot"></i><input id="address" name="address" type="text" maxlength="180" placeholder="Ciudad o dirección de referencia"></div></div>
+              <div><label class="field-label" for="password">Contraseña</label><div class="modern-field"><i class="fa-solid fa-key"></i><input id="password" name="password" type="password" autocomplete="new-password" minlength="8" placeholder="Contraseña segura" required><button class="field-action" type="button" data-toggle-password aria-label="Mostrar contraseña"><i class="fa-regular fa-eye"></i></button></div><div class="password-rules"><span data-rule="length"><i class="fa-solid fa-circle"></i> 8 caracteres</span><span data-rule="uppercase"><i class="fa-solid fa-circle"></i> Mayúscula</span><span data-rule="number"><i class="fa-solid fa-circle"></i> Número</span><span data-rule="special"><i class="fa-solid fa-circle"></i> Símbolo</span></div></div>
+              <div><label class="field-label" for="confirmPassword">Confirmar contraseña</label><div class="modern-field"><i class="fa-solid fa-shield-halved"></i><input id="confirmPassword" name="confirmPassword" type="password" autocomplete="new-password" minlength="8" placeholder="Repite tu contraseña" required><button class="field-action" type="button" data-toggle-password aria-label="Mostrar contraseña"><i class="fa-regular fa-eye"></i></button></div></div>
+            </div>
+            <div class="step-buttons"><button class="ghost-action" type="button" data-prev-step><i class="fa-solid fa-arrow-left"></i> Atrás</button><button class="primary-action waves-effect" type="submit"><span>Crear mi cuenta</span><i class="fa-solid fa-user-plus"></i></button></div>
+          </section>
+        </form>
+        <p class="auth-switch signup-switch">¿Ya tienes una cuenta? <a href="/signIn">Iniciar sesión</a></p>
+      </div>
     </section>
   </main>
   <script src="/js/auth-client.js"></script><script src="/js/sign-up.js"></script>

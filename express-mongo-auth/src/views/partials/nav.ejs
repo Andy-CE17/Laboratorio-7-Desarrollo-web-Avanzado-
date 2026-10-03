@@ -2,17 +2,18 @@
   <div class="shell app-nav">
     <a class="brand" href="/dashboard" aria-label="Nexus inicio">
       <span class="brand-icon"><i class="fa-solid fa-fingerprint"></i></span>
-      <span>NEXUS</span>
+      <span class="brand-copy"><strong>NEXUS</strong><small>Identidad digital</small></span>
     </a>
     <nav class="desktop-nav" aria-label="Navegación principal">
-      <a data-nav-user href="/dashboard"><i class="fa-solid fa-grid-2"></i> Panel</a>
-      <a data-nav-admin href="/admin"><i class="fa-solid fa-users-gear"></i> Administración</a>
-      <a href="/profile"><i class="fa-regular fa-id-card"></i> Mi cuenta</a>
+      <a data-nav-user href="/dashboard"><span class="nav-link-icon"><i class="fa-solid fa-house"></i></span><span>Panel</span></a>
+      <a data-nav-admin href="/admin"><span class="nav-link-icon"><i class="fa-solid fa-users-gear"></i></span><span>Administración</span></a>
+      <a href="/profile"><span class="nav-link-icon"><i class="fa-solid fa-address-card"></i></span><span>Mi cuenta</span></a>
     </nav>
     <div class="nav-account">
       <span class="nav-avatar" data-user-initials>--</span>
       <div class="nav-identity"><strong data-user-name>Usuario</strong><span data-user-role>Sesión segura</span></div>
-      <button class="icon-button" type="button" data-logout aria-label="Cerrar sesión" title="Cerrar sesión"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+      <span class="account-divider"></span>
+      <button class="icon-button" type="button" data-logout aria-label="Cerrar sesión" title="Cerrar sesión"><i class="fa-solid fa-power-off"></i></button>
     </div>
   </div>
 </header>

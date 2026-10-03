@@ -44,7 +44,7 @@
     document.querySelectorAll("[data-user-name]").forEach((el) => { el.textContent = user?.name || "Usuario"; });
     document.querySelectorAll("[data-user-role]").forEach((el) => { el.textContent = roles.includes("admin") ? "Administrador" : "Usuario"; });
     document.querySelectorAll("[data-nav-admin]").forEach((el) => { el.hidden = !roles.includes("admin"); });
-    document.querySelectorAll("[data-nav-user]").forEach((el) => { el.href = roles.includes("admin") ? "/admin" : "/dashboard"; });
+    document.querySelectorAll("[data-nav-user]").forEach((el) => { el.href = "/dashboard"; });
   };
 
   const guard = ({ roles } = {}) => {
