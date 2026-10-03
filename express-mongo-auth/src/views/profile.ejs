@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head><%- include("partials/head", { title: "Mi cuenta" }) %></head>
+<body class="app-page" data-page="profile">
+  <%- include("partials/nav") %>
+  <main class="shell profile-main">
+    <div class="page-intro"><div><p class="overline"><span></span> Configuración personal</p><h1>Mi cuenta</h1><p>Actualiza la información que identifica tu perfil.</p></div><a class="text-action" href="/dashboard"><i class="fa-solid fa-arrow-left"></i> Volver al panel</a></div>
+    <div class="profile-layout">
+      <aside class="surface profile-aside">
+        <div class="large-avatar profile-avatar" data-avatar><span data-profile-initials>--</span></div>
+        <h2 data-profile-name>Cargando...</h2><p data-profile-email>—</p>
+        <div class="account-state"><i class="fa-solid fa-shield-check"></i><div><strong>Cuenta protegida</strong><span>Sesión verificada con JWT</span></div></div>
+        <div class="age-callout"><span>Edad actual</span><strong data-age-preview>—</strong><p>Se calcula a partir de tu fecha de nacimiento. Este valor no se guarda.</p></div>
+      </aside>
+      <section class="surface form-panel">
+        <div class="section-heading"><div><p class="overline">Datos del perfil</p><h2>Información personal</h2></div><span class="save-indicator"><i class="fa-regular fa-circle-check"></i> Campos protegidos</span></div>
+        <div class="alert" data-alert hidden></div>
+        <form id="profileForm" class="profile-form" novalidate>
+          <div class="form-grid">
+            <div><label class="field-label" for="name">Nombres</label><div class="modern-field"><i class="fa-regular fa-user"></i><input id="name" name="name" required minlength="2"></div></div>
+            <div><label class="field-label" for="lastName">Apellidos</label><div class="modern-field"><i class="fa-solid fa-user-tag"></i><input id="lastName" name="lastName" required minlength="2"></div></div>
+            <div><label class="field-label" for="email">Correo electrónico</label><div class="modern-field"><i class="fa-regular fa-envelope"></i><input id="email" name="email" type="email" required></div></div>
+            <div><label class="field-label" for="phoneNumber">Teléfono</label><div class="modern-field"><i class="fa-solid fa-phone"></i><input id="phoneNumber" name="phoneNumber" type="tel" required></div></div>
+            <div><label class="field-label" for="birthdate">Fecha de nacimiento</label><div class="modern-field"><i class="fa-regular fa-calendar"></i><input id="birthdate" name="birthdate" type="date" required></div></div>
+            <div><label class="field-label" for="url_profile">URL de imagen</label><div class="modern-field"><i class="fa-regular fa-image"></i><input id="url_profile" name="url_profile" type="url" placeholder="https://..."></div></div>
+          </div>
+          <label class="field-label" for="address">Dirección</label><div class="modern-field"><i class="fa-solid fa-location-dot"></i><input id="address" name="address" maxlength="180" placeholder="Ciudad, distrito o dirección"></div>
+          <div class="form-actions"><button class="primary-action waves-effect" type="submit"><span>Guardar cambios</span><i class="fa-solid fa-check"></i></button><a class="ghost-action" href="/dashboard">Cancelar</a></div>
+        </form>
+      </section>
+    </div>
+  </main>
+  <script src="/js/auth-client.js"></script><script src="/js/profile.js"></script>
+</body>
+</html>

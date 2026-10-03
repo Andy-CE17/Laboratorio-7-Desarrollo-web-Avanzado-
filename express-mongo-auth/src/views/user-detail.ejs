@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head><%- include("partials/head", { title: "Detalle de usuario" }) %></head>
+<body class="app-page" data-page="user-detail" data-user-id="<%= userId %>">
+  <%- include("partials/nav") %>
+  <main class="shell profile-main">
+    <div class="page-intro"><div><p class="overline"><span></span> Vista administrativa</p><h1>Detalle del usuario</h1><p>Información completa de la cuenta seleccionada.</p></div><a class="text-action" href="/admin"><i class="fa-solid fa-arrow-left"></i> Volver a usuarios</a></div>
+    <section class="surface user-detail-card">
+      <div class="detail-profile-head"><div class="large-avatar" data-avatar><span data-detail-initials>--</span></div><div><span class="status-pill"><i class="fa-solid fa-circle"></i> Cuenta activa</span><h2 data-detail-name>Cargando...</h2><p data-detail-email>—</p><div class="role-row" data-detail-roles></div></div><div class="detail-id"><span>Identificador</span><code data-detail-id>—</code></div></div>
+      <div class="detail-grid detail-grid-wide">
+        <div class="detail-item"><i class="fa-solid fa-phone"></i><span>Teléfono</span><strong data-detail-phone>—</strong></div>
+        <div class="detail-item"><i class="fa-solid fa-cake-candles"></i><span>Edad calculada</span><strong data-detail-age>—</strong></div>
+        <div class="detail-item"><i class="fa-regular fa-calendar"></i><span>Nacimiento</span><strong data-detail-birthdate>—</strong></div>
+        <div class="detail-item"><i class="fa-solid fa-calendar-plus"></i><span>Registro</span><strong data-detail-created>—</strong></div>
+        <div class="detail-item wide"><i class="fa-solid fa-location-dot"></i><span>Dirección</span><strong data-detail-address>Sin registrar</strong></div>
+      </div>
+      <div class="data-note"><i class="fa-solid fa-database"></i><div><strong>Edad dinámica</strong><p>La edad mostrada se obtiene en tiempo real desde la fecha de nacimiento; no ocupa un campo en MongoDB.</p></div></div>
+    </section>
+  </main>
+  <script src="/js/auth-client.js"></script><script src="/js/user-detail.js"></script>
+</body>
+</html>

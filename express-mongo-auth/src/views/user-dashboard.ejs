@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head><%- include("partials/head", { title: "Mi panel" }) %></head>
+<body class="app-page" data-page="dashboard">
+  <%- include("partials/nav") %>
+  <main class="shell dashboard-main">
+    <section class="dashboard-hero">
+      <div>
+        <p class="overline"><span></span> Espacio personal</p>
+        <h1>Hola, <em data-first-name>usuario</em>.</h1>
+        <p>Consulta la información vinculada a tu cuenta y mantén tus datos actualizados.</p>
+      </div>
+      <div class="hero-badge"><i class="fa-solid fa-shield-check"></i><span>Cuenta verificada</span><strong>Protección activa</strong></div>
+    </section>
+
+    <section class="dashboard-grid">
+      <article class="profile-overview surface">
+        <div class="profile-cover"></div>
+        <div class="profile-content">
+          <div class="large-avatar" data-avatar><span data-profile-initials>--</span></div>
+          <span class="status-pill"><i class="fa-solid fa-circle"></i> Activo</span>
+          <h2 data-full-name>Cargando...</h2>
+          <p data-email>—</p>
+          <div class="role-row" data-roles></div>
+          <a class="secondary-action waves-effect" href="/profile"><i class="fa-regular fa-pen-to-square"></i> Editar mi perfil</a>
+        </div>
+      </article>
+
+      <div class="dashboard-content">
+        <section class="metric-grid">
+          <article class="metric-card surface"><span class="metric-icon violet"><i class="fa-solid fa-cake-candles"></i></span><div><small>Edad calculada</small><strong data-age>—</strong><p>No se almacena en la base de datos</p></div></article>
+          <article class="metric-card surface"><span class="metric-icon lime"><i class="fa-solid fa-calendar-check"></i></span><div><small>Miembro desde</small><strong data-member-since>—</strong><p>Fecha de creación de la cuenta</p></div></article>
+          <article class="metric-card surface"><span class="metric-icon coral"><i class="fa-solid fa-chart-pie"></i></span><div><small>Perfil completado</small><strong data-completion>—</strong><div class="progress-track"><span data-completion-bar></span></div></div></article>
+        </section>
+
+        <section class="surface details-panel">
+          <div class="section-heading"><div><p class="overline">Información personal</p><h2>Resumen de la cuenta</h2></div><a href="/profile">Administrar <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
+          <div class="detail-grid">
+            <div class="detail-item"><i class="fa-solid fa-phone"></i><span>Teléfono</span><strong data-phone>—</strong></div>
+            <div class="detail-item"><i class="fa-solid fa-location-dot"></i><span>Dirección</span><strong data-address>Sin registrar</strong></div>
+            <div class="detail-item"><i class="fa-solid fa-calendar-day"></i><span>Fecha de nacimiento</span><strong data-birthdate>—</strong></div>
+            <div class="detail-item"><i class="fa-solid fa-user-tag"></i><span>Nivel de acceso</span><strong data-access>Usuario</strong></div>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+  <script src="/js/auth-client.js"></script><script src="/js/dashboard.js"></script>
+</body>
+</html>

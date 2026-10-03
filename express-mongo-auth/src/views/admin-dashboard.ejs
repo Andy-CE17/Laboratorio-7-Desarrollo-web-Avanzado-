@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head><%- include("partials/head", { title: "Administración" }) %></head>
+<body class="app-page" data-page="admin">
+  <%- include("partials/nav") %>
+  <main class="shell dashboard-main">
+    <section class="dashboard-hero admin-hero">
+      <div><p class="overline"><span></span> Centro de control</p><h1>Administración de <em>usuarios.</em></h1><p>Supervisa las cuentas registradas y consulta su información desde un solo lugar.</p></div>
+      <span class="admin-mark"><i class="fa-solid fa-user-shield"></i></span>
+    </section>
+    <section class="metric-grid admin-metrics">
+      <article class="metric-card surface"><span class="metric-icon violet"><i class="fa-solid fa-users"></i></span><div><small>Usuarios totales</small><strong data-total-users>—</strong><p>Cuentas registradas</p></div></article>
+      <article class="metric-card surface"><span class="metric-icon lime"><i class="fa-solid fa-user-check"></i></span><div><small>Usuarios estándar</small><strong data-standard-users>—</strong><p>Acceso personal</p></div></article>
+      <article class="metric-card surface"><span class="metric-icon coral"><i class="fa-solid fa-shield-halved"></i></span><div><small>Administradores</small><strong data-admin-users>—</strong><p>Acceso completo</p></div></article>
+      <article class="metric-card surface"><span class="metric-icon gold"><i class="fa-solid fa-bolt"></i></span><div><small>Nuevos este mes</small><strong data-new-users>—</strong><p>Actividad reciente</p></div></article>
+    </section>
+    <section class="surface table-panel">
+      <div class="table-toolbar">
+        <div><p class="overline">Directorio</p><h2>Usuarios registrados</h2></div>
+        <label class="search-box"><i class="fa-solid fa-magnifying-glass"></i><input type="search" data-user-search placeholder="Buscar por nombre o correo"><span class="search-key">⌘ K</span></label>
+      </div>
+      <div class="table-wrap">
+        <table class="users-table responsive-table">
+          <thead><tr><th>Usuario</th><th>Contacto</th><th>Edad</th><th>Rol</th><th>Registro</th><th aria-label="Acciones"></th></tr></thead>
+          <tbody data-users-body><tr><td colspan="6"><div class="loading-state"><span class="spinner"></span> Cargando usuarios...</div></td></tr></tbody>
+        </table>
+      </div>
+      <div class="empty-state" data-empty-users hidden><i class="fa-solid fa-user-slash"></i><h3>Sin coincidencias</h3><p>Prueba con otro nombre o correo electrónico.</p></div>
+      <div class="table-footer"><span data-result-count>0 usuarios</span><span><i class="fa-solid fa-lock"></i> Información protegida</span></div>
+    </section>
+  </main>
+  <script src="/js/auth-client.js"></script><script src="/js/admin.js"></script>
+</body>
+</html>
