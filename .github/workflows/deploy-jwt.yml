@@ -1,0 +1,60 @@
+name: Validar y desplegar API JWT
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "express-mongo-auth/**"
+      - ".github/workflows/deploy-jwt.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: api-jwt-produccion
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Validar proyecto
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: express-mongo-auth
+
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: express-mongo-auth/package-lock.json
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Comprobar sintaxis
+        run: npm run check
+
+      - name: Revisar dependencias de produccion
+        run: npm audit --omit=dev --audit-level=high
+
+  deploy:
+    name: Desplegar en Render
+    needs: validate
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Solicitar despliegue
+        env:
+          RENDER_DEPLOY_HOOK_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+        run: |
+          if [ -z "$RENDER_DEPLOY_HOOK_URL" ]; then
+            echo "Falta configurar el secreto RENDER_DEPLOY_HOOK_URL"
+            exit 1
+          fi
+          curl --fail --show-error --silent --request POST "$RENDER_DEPLOY_HOOK_URL"
