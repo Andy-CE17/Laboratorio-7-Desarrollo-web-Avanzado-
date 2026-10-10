@@ -62,7 +62,19 @@ app.use((error, req, res, next) => {
 
 async function startServer() {
   try {
-    await mongoose.connect(process.env.MONGODB_URI, { autoIndex: true });
+    const mongoUri = process.env.MONGO_URI || process.env.MONGODB_URI;
+    const mongoOptions = { autoIndex: true };
+
+    if (process.env.MONGO_USER && process.env.MONGO_PASSWORD) {
+      mongoOptions.user = process.env.MONGO_USER;
+      mongoOptions.pass = process.env.MONGO_PASSWORD;
+    }
+
+    if (!mongoUri) {
+      throw new Error("No se configuró la conexión a MongoDB");
+    }
+
+    await mongoose.connect(mongoUri, mongoOptions);
     console.log("MongoDB conectado");
 
     await seedRoles();
