@@ -20,7 +20,9 @@
   };
 
   accessButtons.forEach((button) => button.addEventListener("click", () => selectAccess(button.dataset.accessType)));
-  email.value = localStorage.getItem("nexus_remembered_email") || ""; form.rememberEmail.checked = Boolean(email.value);
+  localStorage.removeItem("nexus_remembered_email");
+  email.value = "";
+  form.password.value = "";
   const query = new URLSearchParams(location.search);
   if (query.has("registered")) NexusAuth.showAlert(alert, "Tu cuenta fue creada. Ya puedes iniciar sesión.", "success");
   if (query.has("session")) NexusAuth.showAlert(alert, "Tu sesión terminó. Ingresa nuevamente para continuar.");
@@ -38,7 +40,6 @@
           : "Esta cuenta es personal. Selecciona Usuario para ingresar.");
       }
       NexusAuth.setSession(data.token, data.user);
-      form.rememberEmail.checked ? localStorage.setItem("nexus_remembered_email", email.value.trim()) : localStorage.removeItem("nexus_remembered_email");
       NexusAuth.redirectForRoles(data.user.roles);
     } catch (error) { NexusAuth.showAlert(alert, error.message); NexusAuth.setLoading(button, false); }
   });
